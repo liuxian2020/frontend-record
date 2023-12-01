@@ -1,0 +1,112 @@
+// sidebar
+$menuText:#bfcbd9;
+$menuActiveText:#409EFF;
+$subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+$theme-color:  #448AFF;
+$menuBg:#304156;
+$menuHover:#263445;
+
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}
+
+
+// w-10: width: 100px;
+@for $thirty from 10 through 50 {
+  .w-#{($thirty*10)} {
+      width:10px * $thirty;
+  }
+  .h-#{($thirty*10)} {
+      height:10px * $thirty;
+  }
+}
+
+// 文件名以下划线开头表示被引用文件，引用时不用加下划线和后缀名
+//定义颜色
+$colors:(
+  info: #e6e6e6,
+);
+$border-color: map-get($map: $colors, $key: 'info');
+// border-top: 0.7px solid #e6e6e6;
+@each $var in (top,right,bottom,left) {
+    .border-#{$var} {
+        border-#{$var}: 0.7px solid $border-color;
+    }  
+}
+
+// text-align
+@each $var in (left, center, right) {
+    // #{}引用变量
+    .text-#{$var} {
+        text-align: $var !important;
+    }
+}
+
+// spacing
+// 0-5: 0
+$spacing-types:(m:margin,
+  p:padding);
+$spacing-directions:(t:top,
+  r:right,
+  b:bottom,
+  l:left);
+@each $typeKey,
+// m margin ----- p padding
+$type in $spacing-types {
+// mt-10  margin-top: 10px; ml margin-left mr margin-right mb marigin-bottom
+//   pt-10
+  @each $directionKey,
+  $direction in $spacing-directions {
+    @for $size from 3 through 30 {
+      .#{$typeKey}#{$directionKey}-#{$size} {
+        #{$type}-#{$direction}: $size * 1px;
+      }
+    }
+  }   
+}
+
+@for $size from 1 through 3 {
+  .flex-#{$size} {
+    flex: $size;
+  }
+}
+
+// jc-start： justify-content: flex-start;
+$flex-jc:(start: flex-start,
+  left: left,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around);
+@each $jcKey,
+$jc in $flex-jc {
+  .jc-#{$jcKey} {
+    justify-content: $jc;
+  }
+}
+
+// ai-start: align-items: flex-start;
+$flex-ai:(start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch);
+@each $aiKey,
+$ai in $flex-ai {
+  .ai-#{$aiKey} {
+    align-items: $ai;
+  }
+}
