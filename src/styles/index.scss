@@ -59,7 +59,22 @@ div:focus {
   }
 }
 
-// main-container global css
 .app-container {
   padding: 20px;
+}
+
+/* dark主题 */
+:root[theme='orange'] {
+  --el-color-primary: orange;
+  --el-font-color: #fff;
+}
+:root[theme='blue'] {
+  --el-color-primary: #409eff;
+  --el-font-color: #fff;
+}
+/* light主题 */
+:root[theme='white'],
+:root {
+  --el-color-primary: #fff;
+  --el-font-color: #303133;
 }

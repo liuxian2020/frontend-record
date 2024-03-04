@@ -54,13 +54,10 @@ export default {
   height: 100vh;
 }
 
-/*隐藏ol的一些自带元素*/
-// 隐藏zoom组件
 /deep/.ol-zoom {
   display: none;
 }
 
-// 隐藏右下角版权信息
 /deep/.ol-attribution.ol-uncollapsible {
   display: none;
 }

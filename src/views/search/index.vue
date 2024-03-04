@@ -20,7 +20,7 @@ export default {
   components: {
     Search
   },
-  data() {
+  data () {
     return {
       labelList: [{
         name: '文本框',
@@ -78,19 +78,19 @@ export default {
         pickerOptions: {
           shortcuts: [{
             text: '今天',
-            onClick(picker) {
+            onClick (picker) {
               picker.$emit('pick', new Date());
             }
           }, {
             text: '昨天',
-            onClick(picker) {
+            onClick (picker) {
               const date = new Date();
               date.setTime(date.getTime() - 3600 * 1000 * 24);
               picker.$emit('pick', date);
             }
           }, {
             text: '一周前',
-            onClick(picker) {
+            onClick (picker) {
               const date = new Date();
               date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
               picker.$emit('pick', date);
@@ -141,15 +141,15 @@ export default {
       boxList: []
     }
   },
-  created() {
+  created () {
     this.getApi()
   },
-  mounted() {
+  mounted () {
     this.setSearchValue()
   },
   methods: {
     // 初始化search的值
-    setSearchValue() {
+    setSearchValue () {
       const Search = this.$refs.Search2
       this.searchQuery.id = 111
       this.searchQuery.stateList = [1]
@@ -157,7 +157,7 @@ export default {
         Search.setQuery(this.searchQuery)
       }
     },
-    getSelect(query, prop) {
+    getSelect (query, prop) {
       // 如果改变的是协议
       if (prop === 'propId') {
         const selectList = [{
@@ -187,11 +187,11 @@ export default {
       this.getApi()
     },
     // 查询页面
-    getPageOne(query, prop) {
+    getPageOne (query, prop) {
       this.getApi()
     },
     // 调用接口查询
-    getApi() {
+    getApi () {
       this.loadedName = ''
       setTimeout(() => {
         this.loadedName = '暂无数据'
@@ -202,13 +202,16 @@ export default {
 </script>
 <style lang="scss">
 @import '~@/styles/variables.scss';
+
 .searchClass {
   padding: 20px;
+
   .labe {
     display: inline-block;
     margin-top: 15px;
     margin-bottom: 10px;
   }
+
   .box {
     position: relative;
     margin-top: 30px;

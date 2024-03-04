@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div>返回上一层</div>
-    <div ref="charts" style="width: 100%; height: 100%;margin:0 auto"></div>
+    <div ref="charts" class="charts2"></div>
   </div>
 </template>
 
@@ -60,6 +60,10 @@ export default {
   },
   mounted () {
     this.initCharts()
+  },
+  beforeDestroy () {
+    // const charts = echarts.init(this.$refs['chinaMap'])
+    this.myEcharts.dispose()
   },
   methods: {
     initCharts () {
@@ -173,8 +177,12 @@ export default {
 }
 </script>
 <style scoped>
-.content {
+/* .content {
   background-color: #0e2152;
   height: calc(100vh - 100px);
+} */
+.charts2 {
+  width: 100%;
+  height: calc(100vh - 50px);
 }
 </style>

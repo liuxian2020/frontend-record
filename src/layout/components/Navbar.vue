@@ -3,11 +3,18 @@
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
-
     <div class="right-menu">
+      <el-popover placement="top-start" width="200" trigger="click">
+        <div class="out-box">
+          <div @click="changeSkin(item.theme)" v-for="(item, index) in skinList" :key="index" class="skin-item"
+            :style="{ 'background': item.color }">
+          </div>
+        </div>
+        <div class="skin" slot="reference">换肤</div>
+      </el-popover>
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img src="@/assets/carousel/1.jpg" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -16,12 +23,6 @@
               Home
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">Log Out</span>
           </el-dropdown-item>
@@ -47,25 +48,66 @@ export default {
       'avatar'
     ])
   },
+  data () {
+    return {
+      skinList: [{
+        theme: 'orange',
+        color: 'orange'
+      }, {
+        theme: 'blue',
+        color: '#409eff'
+      }, {
+        theme: 'white',
+        color: '#fff'
+      }]
+    }
+  },
   methods: {
-    toggleSideBar() {
+    toggleSideBar () {
       this.$store.dispatch('app/toggleSideBar')
     },
-    async logout() {
-      await this.$store.dispatch('user/logout')
+    logout () {
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    changeSkin (theme) {
+      this.$store.dispatch('user/getTheme', theme)
+      document.documentElement.setAttribute("theme", theme);
     }
   }
 }
 </script>
 
+<style lang="scss">
+.skin {
+  display: inline-block;
+  color: var(--el-font-color);
+  position: absolute;
+  right: 100px;
+  top: 2px;
+  cursor: pointer;
+}
+
+.out-box {
+  display: flex;
+}
+
+.skin-item {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  box-shadow: 1px 1px 5px #bcb7b7, -1px -1px 5px #bcb7b7;
+}
+</style>
 <style lang="scss" scoped>
 .navbar {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  background: var(--el-color-primary);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 
   .hamburger-container {
     line-height: 46px;
@@ -73,7 +115,7 @@ export default {
     float: left;
     cursor: pointer;
     transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       background: rgba(0, 0, 0, .025)

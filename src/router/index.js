@@ -42,50 +42,22 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-  // css动效
+
   {
-    path: '/',
-    redirect: '/csseffect',
+    path: "/",
     component: Layout,
-    meta: { title: '动效' },
+    meta: { title: 'echarts集合' },
+    redirect: "/echartsIndex",
     children: [
       {
-        path: '/csseffect',
-        name: 'csseffect',
-        component: () => import('@/views/csseffect/index'),
-        meta: { title: 'css动效' }
+        path: '/echartsIndex',
+        name: 'echartsIndex',
+        component: () => import('@/views/map/echarts'),
+        meta: {
+          title: '折线图·饼图集合',
+        }
       },
-      {
-        path: '/transition',
-        name: 'transition',
-        component: () => import('@/views/transition/index'),
-        meta: {
-          title: 'transition',
-        }
-      }
-    ]
-  },
-  {
-    path: "/robot",
-    component: Layout,
-    children: [
-      // 利用threeJS实现的机器人
-      {
-        path: '/robot',
-        name: 'robot',
-        component: () => import('@/views/robot/index'),
-        meta: {
-          title: '机器人',
-        }
-      }
-    ]
-  },
-  {
-    path: "/map",
-    component: Layout,
-    meta: { title: '3d地图展示' },
-    children: [
-      // 攻击图 数据图 地图下钻 收集三类即可 目前缺
+      // 曲线图
       {
         path: '/map',
         name: 'map',
@@ -108,50 +80,154 @@ export const constantRoutes = [
         name: 'map3',
         component: () => import('@/views/map/index3'),
         meta: {
-          title: '地图打点',
+          title: '地图数据展示',
+        }
+      },
+      // 折线图表
+      {
+        path: '/twoLine',
+        name: 'twoLine',
+        component: () => import('@/views/map/twoLine'),
+        meta: {
+          title: '双y轴',
+        }
+      },
+    ]
+  },
+  {
+    path: "/vueApplications",
+    component: Layout,
+    children: [{
+      path: "/vueApplications",
+      name: "vueApplications",
+      component: () => import("@/views/microApp/vue3.vue"),
+      meta: { title: "microApp嵌入vue3项目", code: 'vue3' },
+    }]
+  },
+  {
+    path: "/search",
+    component: Layout,
+    children: [
+      {
+        path: '/search',
+        name: 'search',
+        component: () => import('@/views/search/index'),
+        meta: {
+          title: '搜索',
         }
       }
     ]
   },
   {
-    path: "/openlayer",
+    path: "/robot",
     component: Layout,
+    meta: { title: 'threeJs案例' },
     children: [
       {
-        path: '/openlayer',
-        name: 'openlayer',
-        component: () => import('@/views/openlayer/index'),
+        path: '/robot',
+        name: 'robot',
+        component: () => import('@/views/robot/index'),
         meta: {
-          title: 'openlayer',
+          title: '机器人',
         }
+        // }, {
+        //   path: '/ali-demo',
+        //   name: 'aliDemo',
+        //   component: () => import('@/views/three/aliDemo'),
+        //   meta: {
+        //     title: '仿阿里官网',
+        //   }
       }
     ]
   },
+  // css动效
   {
-    path: "/three",
+    path: '/star',
+    redirect: '/starIndex',
     component: Layout,
-    meta: {
-      title: '3d线加载',
-    },
+    meta: { title: '动效' },
     children: [
       {
-        path: '/three',
-        name: 'three',
-        component: () => import('@/views/three/index'),
+        path: '/starIndex',
+        name: 'starIndex',
+        component: () => import('@/views/csseffect/star'),
         meta: {
-          title: 'three',
+          title: 'SASS星空效果',
         }
-      }
+      },
+      {
+        path: '/word',
+        name: 'word',
+        component: () => import('@/views/csseffect/word'),
+        meta: {
+          title: '文字阴影',
+        }
+      },
+      {
+        path: '/carousel',
+        name: 'carousel',
+        component: () => import('@/views/csseffect/carousel'),
+        meta: {
+          title: '3d渐变轮播图',
+        }
+      },
+      {
+        path: '/water',
+        name: 'water',
+        component: () => import('@/views/csseffect/water'),
+        meta: {
+          title: '水波纹',
+        }
+      },
+      {
+        path: '/color',
+        name: 'color',
+        component: () => import('@/views/csseffect/color'),
+        meta: {
+          title: '玻璃拟态质感',
+        }
+      },
       // {
-      //   path: '/three2',
-      //   name: 'three2',
-      //   component: () => import('@/views/three/index2'),
+      //   path: '/3dHover',
+      //   name: 'color',
+      //   component: () => import('@/views/csseffect/3dHover'),
       //   meta: {
-      //     title: 'three2',
+      //     title: '3dHover',
       //   }
-      // }
+      // },
+      // {
+      //   path: '/viewScroll',
+      //   name: 'color',
+      //   component: () => import('@/views/csseffect/viewScroll'),
+      //   meta: {
+      //     title: '视差滚动',
+      //   }
+      // },
+      {
+        path: '/csseffect',
+        name: 'csseffect',
+        component: () => import('@/views/csseffect/index'),
+        meta: { title: 'css动效' }
+      }
     ]
   },
+  // {
+  //   path: "/three",
+  //   component: Layout,
+  //   meta: {
+  //     title: '3d线加载',
+  //   },
+  //   children: [
+  //     {
+  //       path: '/three',
+  //       name: 'three',
+  //       component: () => import('@/views/three/index'),
+  //       meta: {
+  //         title: 'three',
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: "/aliMenu",
     component: Layout,
@@ -168,13 +244,52 @@ export const constantRoutes = [
     ]
   },
   {
+    path: "/test",
+    component: Layout,
+    children: [
+      // 仿阿里菜单实现
+      {
+        path: '/test',
+        name: 'test',
+        component: () => import('@/views/test'),
+        meta: {
+          title: 'test',
+        }
+      }
+    ]
+  },
+  {
+    path: "/preview",
+    component: Layout,
+    meta: { title: '文件预览' },
+    children: [
+      {
+        path: '/preview/word',
+        name: 'word',
+        component: () => import('@/views/preview/word.vue'),
+        meta: {
+          title: 'word',
+        }
+      },
+      {
+        path: '/preview/pdf',
+        name: 'pdf',
+        component: () => import('@/views/preview/pdf.vue'),
+        meta: {
+          title: 'pdf',
+        }
+      }
+    ]
+  },
+  {
     path: "/canvas",
     component: Layout,
+    redirect: '/canvas1',
     meta: { title: 'canvasDemo' },
     children: [
       {
-        path: '/canvas',
-        name: 'canvas',
+        path: '/canvas1',
+        name: 'canvas1',
         component: () => import('@/views/canvas/index'),
         meta: {
           title: 'canvas',
@@ -238,35 +353,27 @@ export const constantRoutes = [
       },
     ]
   },
-  {
-    path: "/search",
-    component: Layout,
-    children: [
-      {
-        path: '/search',
-        name: 'search',
-        component: () => import('@/views/search/index'),
-        meta: {
-          title: '搜索',
-        }
-      }
-    ]
-  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
+// const createRouter = () => new Router({
+//   scrollBehavior: () => ({ y: 0 }),
+//   routes: constantRoutes
+// })
+
+// const router = createRouter()
+
+// // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+// export function resetRouter () {
+//   const newRouter = createRouter()
+//   router.mode = 'history'
+//   router.base = process.env.BASE_URL
+//   router.matcher = newRouter.matcher // reset router
+// }
+
+const router = new Router({
+  mode: 'history',
   routes: constantRoutes
 })
-
-const router = createRouter()
-
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter () {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
-}
-
 export default router

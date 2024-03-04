@@ -20,6 +20,10 @@ import 'multi-items-input/dist/multi-items-input.css'
 import "./directive/index.js";
 import commonMixin from "./mixins/index.js";
 Vue.mixin(commonMixin);
+
+import microApp from '@micro-zoe/micro-app'
+microApp.start()
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

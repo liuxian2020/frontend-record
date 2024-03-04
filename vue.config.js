@@ -29,6 +29,9 @@ module.exports = {
   devServer: {
     port: port,
     open: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     overlay: {
       warnings: false,
       errors: true
@@ -62,6 +65,9 @@ module.exports = {
         },
         javascriptEnabled: true,
       },
+      less: {
+        javascriptEnabled: true,
+      }
     },
   },
   configureWebpack: {
