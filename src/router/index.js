@@ -57,23 +57,6 @@ export const constantRoutes = [
           title: '折线图·饼图集合',
         }
       },
-      // 曲线图
-      {
-        path: '/map',
-        name: 'map',
-        component: () => import('@/views/map/index'),
-        meta: {
-          title: '地图趋势图',
-        }
-      },
-      {
-        path: '/map2',
-        name: 'map2',
-        component: () => import('@/views/map/index2'),
-        meta: {
-          title: '地图下钻',
-        }
-      },
       // 地图打点图
       {
         path: '/map3',
@@ -81,15 +64,6 @@ export const constantRoutes = [
         component: () => import('@/views/map/index3'),
         meta: {
           title: '地图数据展示',
-        }
-      },
-      // 折线图表
-      {
-        path: '/twoLine',
-        name: 'twoLine',
-        component: () => import('@/views/map/twoLine'),
-        meta: {
-          title: '双y轴',
         }
       },
     ]

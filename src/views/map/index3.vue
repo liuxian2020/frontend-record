@@ -65,7 +65,7 @@ export default {
   methods: {
     initCharts () {
       this.myEcharts = echarts.init(this.$refs['charts'])
-      this.loadMap('./map/100000_full.json', 'china');//初始化全国地图
+      this.loadMap('./100000_full.json', 'china');//初始化全国地图
       let that = this
       this.myEcharts.on('click', function (params) {
         that.handleClick(params)
@@ -96,7 +96,7 @@ export default {
         //当双击事件发生时，清除单击事件，仅响应双击事件
         clearTimeout(timeFn);
         //返回全国地图
-        that.loadMap('./map/100000_full.json', 'china');
+        that.loadMap('./100000_full.json', 'china');
       });
 
     },
